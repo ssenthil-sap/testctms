@@ -1,0 +1,23 @@
+name: Push to CTMS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  transport:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Upload to SAP CTMS
+        uses: SAP/cloud-transport-management-action@v2
+        with:
+          serviceKey: ${{ secrets.CTMS_SERVICE_KEY }}
+          nodeName: DEV
+          applicationId: my-app
+          contentPath: "./"      # Push everything OR change to folder/file path
+          transportId: ${{ github.run_id }}
