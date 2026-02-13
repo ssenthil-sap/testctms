@@ -17,7 +17,7 @@ jobs:
         uses: SAP/cloud-transport-management-action@v2
         with:
           serviceKey: ${{ secrets.CTMS_SERVICE_KEY }}
-          nodeName: DEV2
+          nodeName: DEV4
           applicationId: my-app
           contentPath: "./"      # Push everything OR change to folder/file path
           transportId: ${{ github.run_id }}
